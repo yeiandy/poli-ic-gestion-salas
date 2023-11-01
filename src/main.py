@@ -1,1 +1,1 @@
-print("Hola, mundo. Punto de entrada para el proyecto de Integración Continua")
+print("Hola, mundo. Punto de partida para el proyecto de Integración Continua")
