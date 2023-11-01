@@ -1,0 +1,1 @@
+print("Hola, mundo. Punto de entrada para el proyecto de Integración Continua")
