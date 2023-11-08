@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:latest
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    networks:
+      - proj-ic-net
+    environment:
+      - POSTGRES_DB=gestion_salas
+      - POSTGRES_USER=my_user
+      - POSTGRES_PASSWORD=my_password
+
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    networks:
+      - proj-ic-net
+
+networks:
+  proj-ic-net:
+    external: true
+
+volumes:
+  postgres_data:

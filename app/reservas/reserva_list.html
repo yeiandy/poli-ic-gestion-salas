@@ -1,0 +1,15 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h2>Lista de Reservas</h2>
+  <ul>
+    {% for reserva in object_list %}
+      <li>
+        <a href="{{ reserva.get_absolute_url }}">{{ reserva.nombre }}</a>
+        ({{ reserva.fecha_hora_inicio }} - {{ reserva.fecha_hora_fin }})
+      </li>
+    {% empty %}
+      <li>No hay reservas disponibles.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
