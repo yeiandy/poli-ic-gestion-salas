@@ -11,6 +11,16 @@ services:
       - POSTGRES_DB=gestion_salas
       - POSTGRES_USER=my_user
       - POSTGRES_PASSWORD=my_password
+      
+  jenkins:
+    image: jenkins/jenkins:lts
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins_data:/var/jenkins_home
+    networks:
+      - proj-ic-net
 
   web:
     build: .
@@ -30,3 +40,4 @@ networks:
 
 volumes:
   postgres_data:
+  jenkins_data:
