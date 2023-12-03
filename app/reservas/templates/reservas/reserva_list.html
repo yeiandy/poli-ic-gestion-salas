@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reserva de Salas</title>
+<style>
+  body {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+  .navbar {
+    background-color: #005f73;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 0 15px;
+  }
+  .welcome {
+    padding: 20px;
+    background-color: #e1e5f2;
+    text-align: center;
+  }
+  .room-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 20px;
+  }
+  .room {
+    background-color: #ffffff;
+    margin: 10px;
+    padding: 15px;
+    width: calc(33.333% - 20px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+  .room img {
+    max-width: 100%;
+    height: auto;
+  }
+  .booking-btn {
+    background-color: #00b4d8;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 15px;
+    cursor: pointer;
+  }
+  footer {
+    background-color: #023047;
+    color: white;
+    text-align: center;
+    padding: 10px 20px;
+  }
+</style>
+</head>
+<body>
+  <div class="navbar">
+    <div>Logo</div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#rooms">Salas</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+  <div class="welcome">
+    <h1>Reserva de salas - Uso corporativo</h1>
+    <p>Salas de conferencia</p>
+  </div>
+  <div class="room-list">
+    <div class="room">
+      <!--<img src="room1.jpg" alt="Room 1">-->
+      <h2>Sala 1</h2>
+      <p>Capacidad: 100 personas</p>
+      <button class="booking-btn">Validar disponibilidad</button>
+    </div>
+    <!-- Repeat for other rooms -->
+  </div>
+  <footer>
+    <p>Contacto: yedi.andy.xx@gmail.com</p>
+  </footer>
+</body>
+</html>
