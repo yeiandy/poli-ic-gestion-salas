@@ -1,36 +1,41 @@
 version: '3.8'
 
 services:
-  db:
-    image: postgres:latest
-    volumes:
-      - postgres_data:/var/lib/postgresql/data/
-    networks:
-      - proj-ic-net
-    environment:
-      - POSTGRES_DB=gestion_salas
-      - POSTGRES_USER=my_user
-      - POSTGRES_PASSWORD=my_password
-      
-  jenkins:
-    image: jenkins/jenkins:lts
-    ports:
-      - "8080:8080"
-      - "50000:50000"
-    volumes:
-      - jenkins_data:/var/jenkins_home
-    networks:
-      - proj-ic-net
-
   web:
-    build: .
-    command: python manage.py runserver 0.0.0.0:8000
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    command: gunicorn --bind 0.0.0.0:8000 config.wsgi:application
     volumes:
       - .:/app
     ports:
       - "8000:8000"
     depends_on:
       - db
+    networks:
+      - proj-ic-net
+
+  jenkins:
+    build:
+      context: ./jenkins
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins_data:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock  # Allows Jenkins to use the Docker daemon on the host machine
+    networks:
+      - proj-ic-net
+
+  db:
+    image: postgres:latest
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_DB=gestion_salas
+      - POSTGRES_USER=my_user
+      - POSTGRES_PASSWORD=my_password
     networks:
       - proj-ic-net
 
